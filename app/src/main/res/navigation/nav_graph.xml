@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/startFragment">
 
@@ -11,7 +10,11 @@
         android:label="StartFragment" >
         <action
             android:id="@+id/action_startFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_exit"
+            app:popExitAnim="@anim/fragment_close_enter" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -19,7 +22,11 @@
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_exit"
+            app:popExitAnim="@anim/fragment_close_enter" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -27,6 +34,10 @@
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_startFragment"
-            app:destination="@id/startFragment" />
+            app:destination="@id/startFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_exit"
+            app:popExitAnim="@anim/fragment_close_enter" />
     </fragment>
 </navigation>
