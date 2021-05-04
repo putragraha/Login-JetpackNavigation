@@ -41,5 +41,8 @@
             app:popExitAnim="@anim/fragment_close_exit"
             app:popUpTo="@id/startFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="username"
+            app:argType="string" />
     </fragment>
 </navigation>

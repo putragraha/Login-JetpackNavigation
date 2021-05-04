@@ -27,7 +27,10 @@ class LoginFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnLogin.setOnClickListener {
-            val action: NavDirections = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+            val username = binding.etUsername.text.toString()
+            val action: NavDirections = LoginFragmentDirections.actionLoginFragmentToHomeFragment(
+                username
+            )
             findNavController().navigate(action)
         }
     }
