@@ -19,7 +19,7 @@
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="Password"
         android:inputType="textPassword"
         tools:ignore="Autofill,HardcodedText" />
 
