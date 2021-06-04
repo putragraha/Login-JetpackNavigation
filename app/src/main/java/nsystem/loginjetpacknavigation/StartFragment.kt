@@ -11,7 +11,7 @@ import nsystem.loginjetpacknavigation.databinding.FragmentStartBinding
 
 class StartFragment: Fragment() {
 
-    private lateinit var binding: FragmentStartBinding
+    private var binding: FragmentStartBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,15 +20,22 @@ class StartFragment: Fragment() {
     ): View? {
         binding = FragmentStartBinding.inflate(inflater, container, false)
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnLogin.setOnClickListener {
-            val action: NavDirections = StartFragmentDirections.actionStartFragmentToLoginFragment()
-            findNavController().navigate(action)
+        binding?.apply {
+            btnLogin.setOnClickListener {
+                val action: NavDirections = StartFragmentDirections.actionStartFragmentToLoginFragment()
+                findNavController().navigate(action)
+            }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

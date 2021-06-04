@@ -13,7 +13,7 @@ import nsystem.loginjetpacknavigation.databinding.FragmentHomeBinding
 
 class HomeFragment: Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private var binding: FragmentHomeBinding? = null
 
     private val args: HomeFragmentArgs by navArgs()
 
@@ -24,16 +24,23 @@ class HomeFragment: Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        return binding.root
+        return binding?.root
     }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvWelcome.text = "Welcome ${args.username}"
-        binding.btnLogout.setOnClickListener {
-            val action: NavDirections = HomeFragmentDirections.actionHomeFragmentToStartFragment()
-            findNavController().navigate(action)
+        binding?.apply {
+            tvWelcome.text = "Welcome ${args.username}"
+            btnLogout.setOnClickListener {
+                val action: NavDirections = HomeFragmentDirections.actionHomeFragmentToStartFragment()
+                findNavController().navigate(action)
+            }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

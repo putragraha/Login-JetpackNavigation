@@ -12,7 +12,7 @@ import nsystem.loginjetpacknavigation.databinding.FragmentLoginBinding
 
 class LoginFragment: Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
+    private var binding: FragmentLoginBinding? = null
 
     private val args: LoginFragmentArgs by navArgs()
 
@@ -23,18 +23,25 @@ class LoginFragment: Fragment() {
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.etUsername.setText(args.username)
-        binding.btnLogin.setOnClickListener {
-            val username = binding.etUsername.text.toString()
-            val action: NavDirections = LoginFragmentDirections.actionLoginFragmentToHomeFragment(
-                username
-            )
-            findNavController().navigate(action)
+        binding?.apply {
+            etUsername.setText(args.username)
+            btnLogin.setOnClickListener {
+                val username = this.etUsername.text.toString()
+                val action: NavDirections = LoginFragmentDirections.actionLoginFragmentToHomeFragment(
+                    username
+                )
+                findNavController().navigate(action)
+            }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
